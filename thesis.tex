@@ -1,0 +1,77 @@
+\RequirePackage{fix-cm}
+\documentclass[%
+    twoside, openright, titlepage, numbers=noenddot,%
+    cleardoublepage=empty,%
+    abstractoff,%
+    BCOR=5.5mm, paper=a5, fontsize=10pt,% A5 soft cover
+    %BCOR=5.5mm, paper=17cm:24cm, fontsize=10pt,% 17 cm x 24 cm
+    %BCOR=5mm, paper=15.59cm:23.39cm, fontsize=10pt,% Royal soft cover
+    %BCOR=0mm, paper=15.24cm:22.86cm, fontsize=10pt,% US-Trade hard cover
+]{scrreprt}
+\usepackage{etex}
+\reserveinserts{10}
+
+\input{preamble/general}
+\usepackage[final]{pdfpages}
+
+% Bibliography
+\addbibresource[label=ownpubs]{ownpubs.bib}
+\addbibresource{bibliography.bib}
+\addbibresource{misc.bib}
+
+\begin{document}
+\frenchspacing
+\raggedbottom%
+\selectlanguage{english}
+\pagenumbering{roman}
+\pagestyle{scrplain}
+
+%
+% Cover
+%
+% Uncomment and adapt these lines if you want to include a cover PDF.
+%
+%\includepdf[pages={1,{}}]{cover/crop/cover_front.pdf}
+%\cleardoublepage\setcounter{page}{1}
+
+%
+% Frontmatter
+%
+
+\include{frontbackmatter/dirtytitlepage}
+\include{frontbackmatter/titlepage}
+\include{frontbackmatter/titleback}
+\cleardoublepage\include{frontbackmatter/dedication}
+\cleardoublepage\include{frontbackmatter/abstract}
+\cleardoublepage\include{frontbackmatter/acknowledgments}
+\pagestyle{scrheadings}
+\cleardoublepage\include{frontbackmatter/contents}
+
+%
+% Mainmatter
+%
+\cleardoublepage\pagenumbering{arabic}%
+\def\dir{chapters/introduction}
+\include{\dir/main}
+
+\cleardoublepage%
+\def\dir{chapters/a-chapter}
+\include{\dir/main}
+
+\cleardoublepage%
+\def\dir{chapters/conclusion_outlook}
+\include{\dir/main}
+
+\appendix
+\cleardoublepage%
+\def\dir{chapters/appendix}
+\include{\dir/main}
+
+\cleardoublepage\include{frontbackmatter/bibliography}
+
+\bookmarksetup{startatroot}
+%\pagenumbering{gobble}
+\cleardoublepage\include{frontbackmatter/cv}
+\cleardoublepage\include{frontbackmatter/publications}
+
+\end{document}

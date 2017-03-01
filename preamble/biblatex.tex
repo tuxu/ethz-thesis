@@ -1,0 +1,82 @@
+\usepackage[
+  style=nature,%
+  %style=science, article-title=true,%
+  natbib=true,%
+  clearlang=true,%
+  backend=biber,%
+]{biblatex}
+
+\ExecuteBibliographyOptions{%
+  %--- Backend --- --- ---
+  bibwarn=true, %
+  bibencoding=auto, % (ascii, inputenc, <encoding>)
+  %--- Sorting --- --- ---
+  sorting=none, % Sort by name, title, year.
+  % other options: 
+  % nty        Sort by name, title, year.
+  % nyt        Sort by name, year, title.
+  % nyvt       Sort by name, year, volume, title.
+  % anyt       Sort by alphabetic label, name, year, title.
+  % anyvt      Sort by alphabetic label, name, year, volume, title.
+  % ynt        Sort by year, name, title.
+  % ydnt       Sort by year (descending), name, title.
+  % none       Do not sort at all. All entries are processed in citation order.
+  % debug      Sort by entry key. This is intended for debugging only.
+  %
+  sortcase=true,
+  sortlos=los, % (bib, los) The sorting order of the list of shorthands
+  sortcites=true, % do/do not sort citations according to bib	
+  %--- Dates --- --- ---
+  date=comp,  % (short, long, terse, comp, iso8601)
+  %	origdate=
+  %	eventdate=
+  %	urldate=
+  %	alldates=
+  datezeros=true, %
+  dateabbrev=true, %
+  %--- General Options --- --- ---
+  maxnames=3,
+  minnames=1,
+  maxbibnames=100, % do not abbreviate names in bibliography
+  %	autocite= % (plain, inline, footnote, superscript) 
+  autopunct=true,
+  language=auto,
+  babel=none, % (none, hyphen, other, other*)
+  block=none, % (none, space, par, nbpar, ragged)
+  notetype=foot+end, % (foot+end, footonly, endonly)
+  hyperref=true, % (true, false, auto)
+  backref=false,
+  backrefstyle=three, % (none, three, two, two+, three+, all+)
+  backrefsetstyle=setonly, %
+  indexing=false, % 
+  % options:
+  % true       Enable indexing globally.
+  % false      Disable indexing globally.
+  % cite       Enable indexing in citations only.
+  % bib        Enable indexing in the bibliography only.
+  refsection=none, % (part, chapter, section, subsection)
+  refsegment=none, % (none, part, chapter, section, subsection)
+  abbreviate=true, % (true, false)
+  defernumbers=false, % 
+  punctfont=false, % 
+  arxiv=abs, % (ps, pdf, format)	
+  %--- Style Options --- --- ---	
+  % The following options are provided by the standard styles
+  isbn=false,%
+  url=false,%
+  doi=false,%
+  eprint=false,%	
+}%	
+
+% Suppress all date fields except the year
+\AtEveryBibitem{%
+  \clearfield{day}%
+  \clearfield{month}%
+  \clearfield{endday}%
+  \clearfield{endmonth}%
+}
+
+\DeclareRedundantLanguages{en,EN,English}{english}
+
+% Use only the first page number in a given range
+\DeclareFieldFormat{pages}{\mkfirstpage{#1}}

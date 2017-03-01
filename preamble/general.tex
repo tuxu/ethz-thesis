@@ -1,0 +1,253 @@
+% File encoding
+\usepackage[utf8]{inputenc}
+
+% Languages
+\usepackage[main=english,ngerman]{babel}
+
+% classicthesis setup
+\PassOptionsToPackage{%
+  %drafting,%
+  %dottedtoc,%
+  eulerchapternumbers,
+  %listings,%
+  %parts,%
+  floatperchapter, pdfspacing,%
+  beramono,%
+  %minionprospacing,
+  %subfig,%
+  %eulermath,%
+  a5paper,%
+}{classicthesis}
+
+% Meta
+\input{preamble/meta}
+
+% Hyphenation
+\input{preamble/hyphenation}
+
+% Finetuning
+\newcounter{dummy}
+\newlength{\abcd}
+
+% Common abbreviations
+\newcommand{\ie}{i.\,e.\xspace}
+\newcommand{\Ie}{I.\,e.\xspace}
+\newcommand{\eg}{e.\,g.\xspace}
+\newcommand{\Eg}{E.\,g.\xspace}
+
+% Handy packages
+\usepackage{csquotes}  % smart quotes
+\usepackage[T1]{fontenc}
+\usepackage{xspace}
+\usepackage{textcomp}
+\usepackage{mparhack}
+\usepackage{relsize}
+
+% Biblatex
+\input{preamble/biblatex}
+
+% Redefine cite command to include space before
+% <http://tex.stackexchange.com/questions/11602/>
+\let\origcite\cite%
+\def\cite#1{\unskip~\origcite{#1}}
+
+% Math stuff
+\usepackage{amsmath}
+%\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{isomath}
+
+% Figures, tables, and captions
+\usepackage{tabularx}
+\usepackage{ltablex}
+\setlength{\extrarowheight}{3pt}
+\newcommand{\tableheadline}[1]{\multicolumn{1}{c}{\spacedlowsmallcaps{#1}}}
+\newcommand{\myfloatalign}{\centering}
+\usepackage{floatrow}
+\usepackage{caption}
+\captionsetup{format=hang,font=small,labelfont={sc},margin=5pt}
+\usepackage{subcaption}
+\captionsetup[sub]{margin=0pt,font=small,labelfont={rm}}
+
+% Blind text
+\usepackage{blindtext}
+
+% Hyperref
+\usepackage[dvipsnames]{xcolor}
+\usepackage[%
+  hyperfootnotes=false,%
+  pdfpagelabels,%
+  % pdfa,%
+]{hyperref}
+\usepackage{hyperxmp}
+%\pdfcompresslevel=9
+%\pdfadjustspacing=1
+\hypersetup{%
+  %pdfstartpage=3, pdfstartview=FitV,%
+  % following line: colored links (web version)
+  colorlinks=true, linktocpage=true,%
+  % following line: all links in black (for printing)
+  %colorlinks=false, linktocpage=false, pdfborder={0 0 0},%
+  breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
+  plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
+  hypertexnames=true, pdfhighlight=/O,%nesting=true,%frenchlinks,%
+  pdftitle={\myPlainTitle},%
+  pdfauthor={\myName},%
+  pdfcopyright={Copyright (C) \myTime, \myName},%
+  pdfsubject={},%
+  pdfkeywords={},%
+  pdflang={en},%
+}
+
+% Graphics
+\usepackage{graphicx}
+\usepackage{rotating}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{shapes.geometric}
+
+% Circled numbers
+\newcommand*\circled[1]{
+  \tikz[baseline=(char.base)]{
+    \node[shape=circle,draw,inner sep=1pt,font=\footnotesize,%
+          minimum size=0.8\baselineskip] (char) {\figureversion{lining}#1};
+  }
+}
+
+% \tikzexternalize
+% \tikzsetexternalprefix{externalized/}
+
+% Autoreferences
+\renewcommand*{\figureautorefname}{Figure}
+\renewcommand*{\tableautorefname}{Table}
+\renewcommand*{\partautorefname}{Part}
+\renewcommand*{\chapterautorefname}{Chapter}
+\renewcommand*{\sectionautorefname}{Section}
+\renewcommand*{\subsectionautorefname}{Section}
+\renewcommand*{\subsubsectionautorefname}{Section}
+\providecommand{\subfigureautorefname}{\figureautorefname}%
+\usepackage{cleveref}
+
+% Acronyms
+\PassOptionsToPackage{printonlyused}{acronym}
+\usepackage{acronym}
+
+% List items
+\usepackage{enumitem}
+
+% Load classicthesis style
+\usepackage{scrhack}
+\usepackage{classicthesis}
+
+% Customize text width and length
+
+\KOMAoptions{headinclude=true,footinclude=false}
+%\setlength{\textwidth}{10.5cm} % 9 pt font
+\setlength{\textwidth}{11.6cm} % 10 pt font
+% text height set by golden ratio
+%\areaset[current]{\textwidth}{1.618034\textwidth}
+\areaset[current]{\textwidth}{1.5\textwidth}
+
+% Page numbers in plain style
+\clearscrplain
+\ofoot[\raisebox{4\baselineskip}{\pagemark}]{}
+
+%
+% Font setup
+%
+
+% Micro-typographic extensions
+%\usepackage[protrusion=true,expansion=true]{microtype}
+
+% Use Minion Pro
+%\usepackage[
+%  mathlf, % lining figures
+%]{MinionPro}
+%\linespread{1.06}
+
+%
+% Customize colors
+%
+\definecolor{chapter-color}{cmyk}{1, 0.50, 0, 0.25}
+\definecolor{link-color}{cmyk}{1, 0.50, 0, 0.25}
+\definecolor{cite-color}{cmyk}{0, 0.7, 0.9, 0.2}
+
+% Hyperref
+\usepackage{bookmark}
+\hypersetup{
+  %urlcolor=webbrown, linkcolor=RoyalBlue, citecolor=webgreen, %pagecolor=RoyalBlue,%
+  %urlcolor=webbrown, linkcolor=Maroon, citecolor=webgreen,%
+  %urlcolor=link-color, linkcolor=link-color, citecolor=cite-color,%
+  urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
+}
+
+% Chapter font
+\let\chapterNumber\undefined%
+\newfont{\chapterNumber}{eurb10 scaled 5500}
+%\newfont{\chapterNumber}{MinionPro-Regular-lf-t1 scaled 5500}
+
+% SI units
+\usepackage{siunitx}
+\sisetup{
+  separate-uncertainty,
+  repeatunits=false,
+  detect-family,
+  unit-mode=text,
+}
+\DeclareSIUnit\au{a.u.}
+\let\u=\SI%
+
+% Product type codes
+\newcommand{\productcode}[1]{\figureversion{lining}#1}
+
+% TOC
+\renewcommand{\cftpartfont}{\color{chapter-color}\normalfont}%
+\renewcommand{\cftpartpagefont}{\normalfont}%
+
+% Chapter number on inside
+\titleformat{\chapter}[display]%
+  {\relax}{\vspace*{-3\baselineskip}\makebox[\linewidth][r]{\color{halfgray}\chapterNumber\thechapter}}{10pt}%
+  {\raggedright\spacedallcaps}[\normalsize\vspace*{.8\baselineskip}\titlerule]%
+
+% Chapter abstract
+\def\chapterabstract#1{%
+  \begingroup
+  \baselineskip1.3em
+  \leftskip1em
+  \rightskip\leftskip\itshape#1
+  \par
+  \endgroup
+}
+
+% Chapter quotes
+% Adapted from: <http://tex.stackexchange.com/questions/53377/inspirational-quote-at-start-of-chapter>
+\setkomafont{dictumtext}{\itshape\small}%
+\setkomafont{dictumauthor}{\normalfont}
+\renewcommand*{\dictumwidth}{0.6\textwidth}
+\renewcommand*{\dictumrule}{}
+\renewcommand*\dictumauthorformat[1]{--- #1}
+
+% Subfigure labels (manual)
+%\newcommand{\subfig}[1]{#1)}
+\newcommand{\subfig}[1]{(#1)}
+
+% CV
+\newcommand{\cvleft}[1]{\begin{minipage}[t]{2.5cm}\begin{flushright}#1\end{flushright}\end{minipage}\hspace{5mm}}
+\newcommand{\cvright}[1]{\begin{minipage}[t]{8cm}{#1}\end{minipage}}
+
+% Footnote without number
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+% Put pages on A4 w/ crop marks
+%\usepackage[a4,center,cam]{crop}
+
+% Widow and club penalties
+\clubpenalty = 10000
+\widowpenalty = 10000
+%\displaywidowpenalty = 10000
