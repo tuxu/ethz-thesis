@@ -146,12 +146,13 @@
 %\setlength{\textwidth}{10.5cm} % 9 pt font
 \setlength{\textwidth}{11.6cm} % 10 pt font
 % text height set by golden ratio
-%\areaset[current]{\textwidth}{1.618034\textwidth}
-\areaset[current]{\textwidth}{1.5\textwidth}
+\areaset[current]{\textwidth}{1.618034\textwidth}
 
-% Page numbers in plain style
+% Page numbers in plain style (chapter titles)
 \clearscrplain
-\ofoot[\raisebox{4\baselineskip}{\pagemark}]{}
+\ofoot[\pagemark]{}
+% Adjust distance to footer (default is too large)
+\setlength{\footskip}{19pt}
 
 %
 % Font setup
